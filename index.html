@@ -1,0 +1,481 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebApp</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+ 
+</head>
+<body>
+
+	<!-- Willkommen logo -->
+	
+	<div id="logoOverlay" class="overlay">
+    <img src="Images/logoheader.png" alt="Logo" class="logo" id="logo">
+</div>
+
+
+<!-- Ende WIllkommen logo -->
+	
+	<header class="ContainerHeader">
+    <div class="HeaderContent">
+        <img class="HeaderLogo" alt="HeroLogo" src="Images/logoheader.png">
+		<div class="cart-icon" id="cartIcon">
+            <button  class="merklisteButton">Merkliste: <span id="itemCount">0</span></button>
+			 
+        </div>
+    </div>
+	
+		
+<!-- Pop-up für die Merkliste -->
+<div id="cartModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close-button">&times;</span>
+        <h2>Merkliste</h2>
+        <div id="cartItems"></div>
+        <div id="totalPrice"></div>
+        <div><span id="itemCount"></span></div>
+		<button id="removeAllButton">Alle Produkte entfernen</button>
+    </div>
+</div>
+
+    </header>
+<!-- SliderShow Navigation -->
+	<div class="slideshow-container">
+  <!-- Slides -->
+  <div class="mySlides fade">
+	  <!-- Button für ein Event mit einer Adresse -->
+	  <button class="SliderShowButtonEvent" onclick="addEventToCalendar('Treffen', 'Projektbesprechung', 'Theodor-Heuss-Straße 24, 70174 Stuttgart', '2024-12-01T10:00:00', '2024-12-01T11:00:00')">In Kalender speichern</button>
+    <img src="Images/steal_Sale.png" alt="Bild 1" style="width:100%">
+	  
+  </div>
+
+  <div class="mySlides fade">
+	  <!-- Button Für Merken in Merkliste -->
+	  <button class="SliderShowButton" data-product-id="slidertest" data-price="100">Merken</button>
+    <img src="Images/Pasta_Sale.png" alt="Bild 2" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+	 <!-- Button Für Merken in Merkliste -->
+<button class="SliderShowButton" data-product-id="Extra-slider" data-price="1000">Merken</button>
+    <img src="Images/Magnum_Sale.png" alt="Bild 3" style="width:100%">
+  </div>
+
+  <!-- Vor/Zurück Buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<!-- Dots -->
+<div class="dots-container">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+	
+
+<!-- Ende SliderSHow  Navigation -->
+	
+	
+
+
+    <div class="Navigation">
+        <!-- Shisha Navigation -->
+        <div class="Nav" id="NavGetreanke" >
+            <nav>
+                <button class="NavButton" data-target="Heissgetränke" onclick="scrollToCategory('Heissgetränke')">Heissgetränke</button>
+                <button class="NavButton" data-target="Getränke" onclick="scrollToCategory('Getränke')">Getränke</button>
+                <button class="NavButton" data-target="Biere" onclick="scrollToCategory('premium-shisha')">Biere</button>
+                <button class="NavButton" data-target="Aperetife" onclick="scrollToCategory('spezial-shisha')">Aperetife</button>
+                <button class="NavButton" data-target="Alkoholfreie Cocktails" onclick="scrollToCategory('extra-shisha')">Alkoholfreie Cocktails</button>
+				 <button class="NavButton" data-target="Longdrinks" onclick="scrollToCategory('extra-shisha')">Longdrinks</button>
+				<button class="NavButton" data-target="Cocktails" onclick="scrollToCategory('extra-shisha')">Cocktails</button>
+				<button class="NavButton" data-target="Weine" onclick="scrollToCategory('extra-shisha')">Longdrinks</button>
+            </nav>
+        </div>
+
+        <!-- Dinner Navigation -->
+        <div class="Nav" id="NavDinner" style="display:none;">
+            <nav>
+                <button class="NavButton" data-target="fleischgerichte" onclick="scrollToCategory('fleischgerichte')">Fleischgerichte</button>
+                <button class="NavButton" data-target="fischgerichte" onclick="scrollToCategory('fischgerichte')">Fischgerichte</button>
+                <button class="NavButton" data-target="scrollToCategory" onclick="scrollToCategory('vegetarische-gerichte')">Vegetarische Optionen</button>
+                <button class="NavButton" data-target="burger-spezial" onclick="scrollToCategory('burger-spezial')">Burger-Spezialitäten</button>
+                <button class="NavButton" data-target="toast-sandwiches" onclick="scrollToCategory('toast-sandwiches')">Toasts - Sandwiches</button>
+                <button class="NavButton" data-target="nuddeln-pasta" onclick="scrollToCategory('nuddeln-pasta')">Nudeln - Pasta</button>
+                <button class="NavButton" data-target="salate-vorspeisen" onclick="scrollToCategory('salate-vorspeisen')">Salate - Vorspeisen</button>
+                <button class="NavButton" data-target="desserts" onclick="scrollToCategory('desserts')">Desserts - Süßspeisen</button>
+                <button class="NavButton" data-target="hauses" onclick="scrollToCategory('hauses')">Spezialitäten des Hauses</button>
+                <button class="NavButton" data-target="kindergerichte" onclick="scrollToCategory('kindergerichte')">Kindergerichte</button>
+            </nav>
+        </div>
+
+        <!-- Drinks Navigation -->
+        <div class="Nav" id="NavDrinks" style="display:none;">
+            <nav>
+                <button class="NavButton" data-target="klassische-cocktails" onclick="scrollToCategory('klassische-cocktails')">Klassische Cocktails</button>
+                <button class="NavButton" data-target="exotische-cocktails" onclick="scrollToCategory('exotische-cocktails')">Exotische Cocktails</button>
+                <button class="NavButton" data-target="signature-cocktails" onclick="scrollToCategory('signature-cocktails')">Signature Cocktails</button>
+                <button class="NavButton" data-target="longdrinks" onclick="scrollToCategory('longdrinks')">Longdrinks</button>
+                <button class="NavButton" data-target="alkoholfreie-cocktails" onclick="scrollToCategory('alkoholfreie-cocktails')">Alkoholfreie Cocktails</button>
+                <button class="NavButton" data-target="bierauswahl" onclick="scrollToCategory('bierauswahl')">Bierauswahl</button>
+                <button class="NavButton" data-target="weissweine" onclick="scrollToCategory('weissweine')">Weißweine</button>
+                <button class="NavButton" data-target="rotweine" onclick="scrollToCategory('rotweine')">Rotweine</button>
+                <button class="NavButton" data-target="spirituosen" onclick="scrollToCategory('spirituosen')">Spirituosen</button>
+                <button class="NavButton" data-target="erfrischungsgetraenke" onclick="scrollToCategory('erfrischungsgetraenke')">Erfrischungsgetränke</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Menu Shisha -->
+	<div id="ShishaMenu" class="ShishaMenu" style="display: none">
+    <h3 class="TitelMenuKat" id="Heissgetränke">Heissgetränke</h3>
+	<div class="containerMenu">
+        <p class="TitelMenu">Latte Macchiato - 4€</p>
+        <p class="Beschreibung"></p>
+		<button class="add-to-cart" data-product-id="Latte Macchiato" data-price="4">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Kaffee - 3€</p>
+        <p class="Beschreibung"></p>
+		<button class="add-to-cart" data-product-id="Kaffee" data-price="3">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Espresso - 2.50€</p>
+        <p class="Beschreibung"></p>
+		<button class="add-to-cart" data-product-id="Espresso" data-price="2.50">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Espresso Doppio - 4.10€</p>
+        <p class="Beschreibung"></p>
+		<button class="add-to-cart" data-product-id="Espresso Doppio" data-price="4.10">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Espresso Macchiato - 2.80€</p>
+        <p class="Beschreibung"></p>
+		<button class="add-to-cart" data-product-id="Espresso Macchiato" data-price="2.80">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Cappuccino - 3.70€</p>
+        <p class="Beschreibung"></p>
+		<button class="add-to-cart" data-product-id="Cappuccino" data-price="3.70">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Heisse Schokolade - 3.60€</p>
+        <p class="Beschreibung"></p>
+		<button class="add-to-cart" data-product-id="Heisse Schokolade" data-price="3.60">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Heisse Schokolade - 4.10€</p>
+        <p class="Beschreibung">mit Sahne</p>
+		<button class="add-to-cart" data-product-id="Heisse Schokolade mit Sahne" data-price="3.60">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Tee - 3.70€</p>
+        <p class="Beschreibung">Auswahl an verschiedenen Sorten</p>
+		<button class="add-to-cart" data-product-id="Tee" data-price="3.10">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+	<div class="containerMenu">
+        <p class="TitelMenu">Tee mit Zitrone - 3.00€</p>
+        <p class="Beschreibung"></p>
+		<button class="add-to-cart" data-product-id="Tee mit Zitrone" data-price="3">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+    
+		
+		
+	<h3 class="TitelMenuKat" id="Getränke">Getränke</h3>
+	<div class="containerMenu">
+    <p class="TitelMenu">Tafelwasser Medium - 2.40€</p>
+    <p class="Beschreibung">0,2 Liter</p>
+   <button class="add-to-cart" data-product-id="Tafelwasser Medium 0,2l" data-price="2.40">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>
+	<div class="containerMenu">
+    <p class="TitelMenu">Tafelwasser Medium  - 4.40€</p>
+    <p class="Beschreibung">1 Liter</p>
+   <button class="add-to-cart" data-product-id="Tafelwasser Medium 0,2l" data-price="4.40">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>
+	<div class="containerMenu">
+    <p class="TitelMenu">Coca Cola - 3.70€</p>
+    <p class="Beschreibung">0,33 Liter </p>
+   <button class="add-to-cart" data-product-id="Coca Cola 0,33l" data-price="3.70">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>
+	<div class="containerMenu">
+    <p class="TitelMenu">Coca Cola Zero - 3.70€</p>
+    <p class="Beschreibung">0,33 Liter</p>
+   <button class="add-to-cart" data-product-id="Coca Cola Zero 0,33l" data-price="3.70">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>
+	<div class="containerMenu">
+    <p class="TitelMenu">Fanta - 3.70€</p>
+    <p class="Beschreibung">0,33 Liter</p>
+   <button class="add-to-cart" data-product-id="Fanta 0,33l" data-price="3.70">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>
+	<div class="containerMenu">
+    <p class="TitelMenu">Mezzo Mix - 3.70€</p>
+    <p class="Beschreibung">0,33 Liter</p>
+   <button class="add-to-cart" data-product-id="Mezzo Mix 0,33l" data-price="3.70">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>
+	<div class="containerMenu">
+    <p class="TitelMenu">Sprite- 3.70€</p>
+    <p class="Beschreibung">0,33 Liter</p>
+   <button class="add-to-cart" data-product-id="Sprite 0,33l" data-price="3.70">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>	
+	<div class="containerMenu">
+    <p class="TitelMenu">Red Bull - 4.00€</p>
+    <p class="Beschreibung">0,25 Liter</p>
+   <button class="add-to-cart" data-product-id="Red Bull 0,25l" data-price="4.00">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>
+	<div class="containerMenu">
+    <p class="TitelMenu">Red Bull Zero - 4.00€</p>
+    <p class="Beschreibung">0,25 Liter</p>
+   <button class="add-to-cart" data-product-id="Red Bull Zero 0,25l" data-price="4.00">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+	</div>
+		
+		
+<h3 class="TitelMenuKat" id="premium-shisha">Premium Shisha-Mischungen</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Spiced Caramel - 28€</p>
+    <p class="Beschreibung">Reicher Karamellgeschmack mit einer feinen Note von Gewürzen.</p>
+   <button class="add-to-cart" data-product-id="-Shisha - Spiced Caramel" data-price="28">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+	<h3 class="TitelMenuKat" id="spezial-shisha">Spezial Shishas</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Blutorangengelee - 22€</p>
+    <p class="Beschreibung">Ein einzigartiger Geschmack von blutroten Orangen, verfeinert mit einer süßen Geleefüllung.</p>
+    <button class="add-to-cart" data-product-id="Shisha-Blutorangengelee" data-price="22">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+<h3 class="TitelMenuKat" id="extra-shisha">Extra Shishas</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Schokolade-Matcha - 22€</p>
+    <p class="Beschreibung">Verführerische Kombination aus zarter Schokolade und dem würzigen Geschmack von Matcha-Tee.</p>
+    <button class="add-to-cart" data-product-id="Shisha-Shokolade-Match" data-price="22">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+	</div>
+	<!-- Menu Dinner -->
+	<div id="DinnerMenu" class="ShishaMenu" style="display: none">
+   <!-- Fleischgerichte -->
+<h3 class="TitelMenuKat" id="fleischgerichte">Fleischgerichte</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Rinder-Gulasch mit Spätzle - 19€</p>
+    <p class="Beschreibung">Herzhaftes Rinder-Gulasch, serviert mit frisch zubereiteten Spätzle und einem Salat.</p>
+    <button class="add-to-cart" data-product-id="Rinder-Gulasch mit Spätzle" data-price="19">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Fischgerichte -->
+<h3 class="TitelMenuKat" id="fischgerichte">Fischgerichte</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Thunfischsteak mit Salsa Verde - 23€</p>
+    <p class="Beschreibung">Gegrilltes Thunfischsteak, serviert mit einer frischen Salsa Verde und gebratenem Gemüse.</p>
+    <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Vegetarische Optionen -->
+<h3 class="TitelMenuKat" id="vegetarische-gerichte">Vegetarische Optionen</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Gefüllte Paprika mit Quinoa - 15€</p>
+    <p class="Beschreibung">Paprika gefüllt mit Quinoa, Gemüse und Gewürzen, serviert mit einem leichten Salat.</p>
+    <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Burger-Spezialitäten -->
+<h3 class="TitelMenuKat" id="burger-spezial">Burger-Spezialitäten</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Mushroom Swiss Burger - 18€</p>
+    <p class="Beschreibung">Rindfleischpatty mit sautierten Champignons und geschmolzenem Swiss-Käse auf einem Brötchen.</p>
+    <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Toast - Sandwiches -->
+<h3 class="TitelMenuKat" id="toast-sandwiches">Toast - Sandwiches</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Thunfisch-Sandwich - 13€</p>
+    <p class="Beschreibung">Toastbrot gefüllt mit Thunfischsalat, Salat und Tomaten.</p>
+    <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Nudeln - Pasta -->
+<h3 class="TitelMenuKat" id="nuddeln-pasta">Nudeln - Pasta</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Spaghetti Bolognese - 16€</p>
+    <p class="Beschreibung">Klassische Spaghetti mit einer herzhaften Bolognese-Sauce.</p>
+    <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Salate - Vorspeisen -->
+<h3 class="TitelMenuKat" id="salate-vorspeisen">Salate - Vorspeisen</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Caesar Salad - 12€</p>
+    <p class="Beschreibung">Klassischer Caesar-Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing.</p>
+   <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Desserts - Süßspeisen -->
+<h3 class="TitelMenuKat" id="desserts">Desserts - Süßspeisen</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Tiramisu - 7€</p>
+    <p class="Beschreibung">Klassisches Tiramisu mit Mascarpone, Kaffee und Kakaopulver.</p>
+    <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Spezialitäten des Hauses -->
+<h3 class="TitelMenuKat" id="hauses">Spezialitäten des Hauses</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Hausgemachte Pizza Margherita - 16€</p>
+    <p class="Beschreibung">Frisch gebackene Pizza mit Tomatensauce, Mozzarella und frischem Basilikum.</p>
+    <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+<!-- Kindergerichte -->
+<h3 class="TitelMenuKat" id="kindergerichte">Kindergerichte</h3>
+<div class="containerMenu">
+    <p class="TitelMenu">Kleine Pizza Margherita - 9€</p>
+    <p class="Beschreibung">Mini-Pizza mit Tomatensauce und Käse, ideal für Kinder.</p>
+    <button class="add-to-cart">+</button>
+	 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+</div>
+
+	</div>
+	<!-- Menu Drinks -->
+	
+	<div id="DrinksMenu" class="DrinksMenu" style="display: none;">
+    <!-- Klassische Cocktails -->
+    <h3 class="TitelMenuKat" id="klassische-cocktails">ROTWEINE OFFEN</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Mojito - 8€</p>
+        <p class="Beschreibung">Erfrischender Cocktail mit Minze, Limette und Rum.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Exotische Cocktails -->
+    <h3 class="TitelMenuKat" id="exotische-cocktails">Exotische Cocktails</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Mai Tai - 10€</p>
+        <p class="Beschreibung">Fruchtiger Cocktail mit Rum, Limette und Orgeat-Sirup.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Signature Cocktails -->
+    <h3 class="TitelMenuKat" id="signature-cocktails">Signature Cocktails</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Sunset Breeze - 11€</p>
+        <p class="Beschreibung">Ein einzigartiger Cocktail mit Ananas, Mango und einem Hauch von Chili.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Longdrinks -->
+    <h3 class="TitelMenuKat" id="longdrinks">Longdrinks</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Gin Tonic - 7€</p>
+        <p class="Beschreibung">Klassischer Longdrink mit Gin und Tonic Water.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Alkoholfreie Cocktails -->
+    <h3 class="TitelMenuKat" id="alkoholfreie-cocktails">Alkoholfreie Cocktails</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Virgin Mojito - 6€</p>
+        <p class="Beschreibung">Eine alkoholfreie Version des klassischen Mojitos.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Bierauswahl -->
+    <h3 class="TitelMenuKat" id="bierauswahl">Bierauswahl</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Helles - 4€</p>
+        <p class="Beschreibung">Klassisches Helles Bier, frisch und hopfig.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Weißweine -->
+    <h3 class="TitelMenuKat" id="weissweine">Weißweine</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Riesling - 6€</p>
+        <p class="Beschreibung">Trocken und fruchtig, ideal zu leichten Gerichten.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Rotweine -->
+    <h3 class="TitelMenuKat" id="rotweine">Rotweine</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Merlot - 8€</p>
+        <p class="Beschreibung">Weicher Rotwein mit Noten von Beeren und Schokolade.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Spirituosen -->
+    <h3 class="TitelMenuKat" id="spirituosen">Spirituosen</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Whiskey - 10€</p>
+        <p class="Beschreibung">Vollmundiger Whiskey mit rauchigen Noten.</p>
+        <button class="add-to-cart">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+    <!-- Erfrischungsgetränke -->
+    <h3 class="TitelMenuKat" id="erfrischungsgetraenke">Erfrischungsgetränke</h3>
+    <div class="containerMenu">
+        <p class="TitelMenu">Cola - 3€</p>
+        <p class="Beschreibung">Klassische Cola, erfrischend und spritzig.</p>
+        <button class="add-to-cart" data-product-id="Cola" data-price="3">+</button>
+		 <button class="info-button" data-info="Allergene: Milch, Gluten">i</button>
+    </div>
+
+	</div>
+	
+    <!-- Navigation Bottom -->
+    <div class="NavigationButtom">
+        <button id="shishaBtn" onclick="showNav('Shisha')">Getränke</button>
+        <button id="dinnerBtn" onclick="showNav('Dinner')">Dinner</button>
+        <button id="drinksBtn" onclick="showNav('Drinks')">Drinks</button>
+    </div>
+	<!-- Such-Popup -->
+
+	<div class="footer">
+		<p style="font-size: 10px" id="copyright" >© BY <strong>SECOND BOWL</strong> CREATED BY <a href="https://www.grekart.de">WWW.GREKART.DE</a></p>
+	</div>
+    <script src="script.js"> </script>
+</body>
+</html>

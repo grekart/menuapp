@@ -1,0 +1,728 @@
+:root {
+	--header-nav-bottom: black;
+	--navigation-header: white;
+	--navigation-button: #e9e9eb;
+	--navigation-button-hover: black;
+	--navigation-button-active: black ;
+	--navigation-button-color: black;
+	--navigation-button-color-active-hover: white;
+	--body-color: White;
+	--text-color:black;
+	--slider-color-dots: #b8b8b8;
+	--slider-color-dots-hover: black;
+	--container-produkte: white;
+	--text-body-color: black;
+	--text-beschreibung-color: black;
+	--add-merkliste-button: black;
+	--add-merkliste-button-text: white;
+	--add-merkliste-button-text-hover: black;
+	--info-button: #e9e9eb;
+	--info-button-hover: black;
+	--info-button-text: black;
+	--info-button-text-hover: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --header-nav-bottom: black;
+		--navigation-header: #0e0e0e;
+		--navigation-button: #131313;
+		--navigation-button-hover: white;
+		--navigation-button-active: white ;
+		--navigation-button-color: white;
+		--navigation-button-color-active-hover: black;
+		--body-color: #131313 ;
+		--slider-color-dots:#2e2e2e;
+		--slider-color-dots-hover: white;
+		--container-produkte: #1b1b1b;
+		--text-body-color: white;
+		--text-beschreibung-color: #6b6b6b ;
+		--add-merkliste-button: #131313;
+		--info-button: #131313;
+		--info-button-hover: white;
+		--info-button-text: white;
+		--info-button-text-hover: black;
+}
+    }
+}
+
+/* ALLGEMEIN*/ 
+
+
+html {
+    touch-action: pan-x pan-y; /* Nur Scrollen erlauben */
+    -ms-touch-action: pan-x pan-y; /* Für ältere Versionen von Edge */
+}
+body {
+	font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 80px; /* Platz für den fixierten Header */
+	background-color: var(--body-color);   /*  FARBE ÄNDERUNG */
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.button {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/*ALLGEMEIN ENDE*/
+
+
+
+/*ERSTE MAL WILLKOMMEN (LOGO) ANIMATION */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Hintergrund schwarz */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Übergang für die Opazität */
+}
+
+.overlay.hide {
+    opacity: 0; /* Wenn die Klasse 'hide' hinzugefügt wird, wird die Opazität auf 0 gesetzt */
+    pointer-events: none; /* Verhindert Interaktionen, wenn das Overlay ausgeblendet ist */
+}
+
+.hidden {
+    display: none; /* Verstecke das Element */
+}
+
+.logo {
+    max-width: 50%;
+    max-height: 50%;
+    opacity: 0; /* Anfangs unsichtbar */
+    transition: opacity 1s ease-in; /* Sanftes Einblenden */
+}
+
+.logo.show {
+    opacity: 1; /* Sichtbar machen */
+}
+
+
+/* ENDE ANIMATION WILLKOMMEN*/
+
+
+
+/* SliderShow */
+
+
+
+
+.SliderShowButton {
+    position: absolute;
+    bottom: 8px;
+    left: 50%; /* Zentriert den Button horizontal */
+    transform: translateX(-50%); /* Korrektur, um genau zu zentrieren */
+    width: 100%; /* Weniger Breite, damit mehr Slider sichtbar bleibt */
+    padding: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparenterer Hintergrund */
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.SliderShowButton:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Mehr Deckkraft beim Hover */
+    transform: translateX(-50%) scale(1.05); /* Leichte Vergrößerung beim Hover */
+}
+
+
+.SliderShowButtonEvent {
+    position: absolute;
+    bottom: 0px;
+    left: 50%; /* Zentriert den Button horizontal */
+    transform: translateX(-50%); /* Korrektur, um genau zu zentrieren */
+    width: 100%; /* Weniger Breite, damit mehr Slider sichtbar bleibt */
+    padding: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparenterer Hintergrund */
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.SliderShowButtonEvent:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Mehr Deckkraft beim Hover */
+    transform: translateX(-50%) scale(1.05); /* Leichte Vergrößerung beim Hover */
+}
+
+/* Container für die Slideshow */
+.slideshow-container {
+  padding-top: 80px;
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 0;
+  height: auto; /* Höhe passt sich an das Bild an */
+}
+
+.slideshow-container img {
+  width: 100%;   /* Bild füllt die Breite aus */
+  height: auto;  /* Höhe passt sich dem Bildseitenverhältnis an */
+  object-fit: cover; 
+  border-radius: inherit;
+}
+
+/* Die einzelnen Slides */
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  width: 100%;
+  border-radius: 0px;
+}
+
+/* Vor- und Zurück-Buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: 0px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.next {
+  right: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Animation für den Fade-Effekt */
+.fade {
+  animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0; } 
+  to { opacity: 1; }
+}
+
+/* Dots (Indikatoren) */
+.dots-container {
+  text-align: center;
+  padding: 10px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+  margin: 0 5px;
+  background-color: var(--slider-color-dots);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: var(--slider-color-dots-hover);
+}
+
+
+
+/* Ende SliderShow Angebote */
+
+
+/* POP UP MERKLISTE*/
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+	transition: all 0.3s ease;
+
+}
+
+.modal-content {
+    z-index: 9999; 
+	background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.wishlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-controls button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.quantity-controls button:hover {
+    background-color: gray;
+}
+
+.wishlist-item strong {
+    margin-right: 10px;
+}
+
+
+.remove-single-button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.remove-single-button:hover {
+    background-color: gray;
+}
+
+.add-single-button{
+	background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.add-single-button:hover{
+	background-color: gray;
+}
+h2 {
+    margin-bottom: 20px;
+	font-family: 'Poppins', sans-serif;
+}
+
+#cartItems div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#removeAllButton{
+	border: none;
+	border-radius: 100px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: black;
+	background-color: e9e9eb;
+}
+#removeAllButton:hover{
+	background-color: black;
+	color: white;
+}
+
+
+/* POP UP MERKLISTE ENDE */
+
+
+
+/*  HEADER */
+
+
+.ContainerHeader {
+    width: 100%;
+    height: 80px;
+    background-color: var(--header-nav-bottom);
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.HeaderContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.HeaderLogo {
+    margin-left: 10px;
+	width: 50px;
+    height: 50px;
+}
+
+.merklisteButton {
+	padding: 10px 20px 10px 20px;
+	border-radius: 50px;
+	border: none;
+	background-color: #151515;
+	color: white;
+}
+.merklisteButton:hover{
+	background-color: white;
+	color: black;
+}
+
+/* Keyframes für den Flash-Effekt */
+@keyframes flash {
+    0% {
+        background-color: #151515;
+        color: white;
+    }
+    50% {
+        background-color: white;
+        color: black; /* Text wird schwarz, wenn der Button weiß ist */
+    }
+    100% {
+        background-color: #151515;
+        color: white;
+    }
+}
+
+/* Klasse, die den Flash-Effekt auslöst */
+.merklisteButton.flash-animation {
+    animation: flash 0.8s ease-in-out 1; /* Dauer 0.8s, einmal abspielen */
+}
+
+.cart-icon{
+	margin-right: 30px;
+	color: white;
+}
+
+
+
+/*HEADER ENDE*/
+
+
+
+
+.Navigation {
+    width: 100%;
+    position: fixed; /* Fixiere die Navigation oben */
+    top: 80px; /* Abstand zum Header */
+    left: 0;
+    z-index: 999; /* Sicherstellen, dass es über dem Inhalt liegt */
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.1); /* Schatten nur nach unten */
+}
+
+.Nav {
+    padding-top: 15px;
+    height: 55px;
+    background-color: var(--navigation-header);
+    display: flex;
+    overflow-x: auto; /* Erlaubt horizontales Scrollen */
+    overflow-y: hidden; /* Verhindert vertikales Scrollen */
+    white-space: nowrap; /* Verhindert Umbruch der Buttons */
+    justify-content: flex-start; /* Buttons linksbündig ausrichten */
+}
+
+.NavGetreanke, .NavDinner, .NavDrinks {
+    display: flex;
+    gap: 5px; /* Abstand zwischen den Buttons */
+}
+
+.NavButton {
+    border-radius: 20px;
+    border: 0;
+    font-size: 16px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    padding: 0px 20px;
+    color: var(--navigation-button-color);
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: var(--navigation-button);
+    flex-shrink: 0; /* Verhindert, dass Buttons zusammengeschoben werden */
+    min-width: 100px; /* Stellt sicher, dass Buttons nicht zu klein sind */
+}
+
+.NavButton:hover {
+    background-color: var(--navigation-button-hover);
+    color: var(--navigation-button-color-active-hover);
+}
+
+.NavButton.active {
+    background-color: var(--navigation-button-active);
+    color: var(--navigation-button-color-active-hover);
+}
+
+/* DIV CONTAINER PRODUKTE */
+.TitelMenu {
+    margin-top: 5px;
+    font-size: 20px;
+    padding: 5px 0px 0px 0px;
+    font-weight: bold;
+	color: var(--text-body-color);
+	
+} 
+
+.TitelMenuKat{
+	margin-top: 20px;
+	margin-left: 20px;
+	padding-top: 90px;
+	color: var(--text-body-color);
+}
+
+.Beschreibung {
+    font-size: 12px;
+    margin-top: 8px;
+	padding-right: 100px;
+	color: var(--text-beschreibung-color);
+}
+
+.containerMenu {
+    position: relative;
+    margin: 7px;
+    background-color: var(--container-produkte);
+    padding-left: 10px;
+    box-shadow: 0px 10px 20px 0.1px hsla(0, 0%, 0%, 0.2);
+    border-left: 2px solid #262626;
+    border-radius: 0px 10px 10px 0px;
+    overflow: hidden;
+}
+
+
+
+
+/* ADD TO CART BUTTON*/
+
+.add-to-cart {
+    transition: background-color 0.3s ease;
+	position: absolute;
+    top: 50%;
+    right: 10px;
+    background-color: var(--add-merkliste-button);
+    border: none;
+    color: var(--add-merkliste-button-text);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 25px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-cart:hover {
+    background-color: grey;
+	color: white;
+}
+
+
+
+
+
+
+/* NAVIGATION UNTEN */
+
+
+.NavigationButtom {
+    background-color: var(--header-nav-bottom);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 10%; /* Volle Breite */
+    height: 70px;
+    position: fixed;
+    bottom: 5px;
+    left: 50%; /* Zentriert horizontal */
+    transform: translateX(-50%);
+    border-radius: 100px; /* Entfernt Rundungen, für volle Breite */
+    padding: 0 165px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.NavigationButtom button {
+    background-color: var(--header-nav-bottom);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    cursor: pointer;
+    font-size: 16px;
+  	margin: 2px 2px 2px 2px;
+}
+
+.NavigationButtom button:hover {
+    background-color: #333;
+}
+
+.NavigationButtom button.active {
+    background-color: white;;
+    color: black;
+}
+
+
+
+/* FOOTER WEB */
+
+.footer {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	z-index: 1;
+}
+
+a{
+	color: var(--text-body-color);
+	text-decoration: none;
+	font-weight: bold;
+	z-index: 1;
+}
+
+a:hover {
+	color: gray;
+	z-index: 1;
+}
+
+#copyright {
+	color: var(--text-body-color);
+}
+
+/* Info Box Für Allergien */
+
+ 
+#close-popup {
+	border: none;
+	border-radius: 100px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: black;
+	background-color: e9e9eb;
+}
+#close-popup:hover{
+	background-color: black;
+	color: white;
+}
+.info-button {
+	border-radius: 50px;
+    color: var(--info-button-text);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px 5px 10px;
+	margin: 0px 0px 10px 0px;
+	background-color: var(--info-button);
+}
+
+.info-button:hover {
+    background-color: var(--info-button-hover);
+	color: var(--info-button-text-hover);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    max-width: 90%;
+    width: 400px; /* Maximalbreite für größere Bildschirme */
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+
+  
+    .popup {
+        width: 90%; /* Vollständige Breite auf kleinen Bildschirmen */
+        padding: 15px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .popup {
+        width: 70%; /* Breite auf mittleren Bildschirmen */
+    }
+}
